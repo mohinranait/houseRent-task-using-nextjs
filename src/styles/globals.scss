@@ -1,5 +1,7 @@
 @use "./utils/index.scss";
-
+:root{
+    --font-mono:   monospace;
+}
 
 *{
     margin: 0;
@@ -9,6 +11,7 @@
 a{
     text-decoration: none;
     display: inline-block;
+    color: index.$darkColor;
 }
 h1,h2,h3,h4,h5,h6,p,ul,li{
     margin: 0;

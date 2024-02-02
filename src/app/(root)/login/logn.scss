@@ -1,0 +1,59 @@
+
+@use "@/styles/utils/index";
+
+.loginSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 50px);
+    .login{
+        width: 450px;
+        background-color: index.$secondaryColor;
+        padding: 20px;
+        box-shadow: index.$shadow;
+        border-radius: 8px;
+        .pagetitle{
+            font-size: 25px;
+            color: rgb(71, 71, 71);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .loginForm{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            button{
+                width: 100%;
+                padding: 14px 0;
+            }
+        }
+       .textalert{
+            text-align: center;
+            color: rgb(54, 54, 54);
+            font-size: 15px;
+            margin: 20px 0;
+            a{
+                color: rgb(54, 54, 54);
+                text-decoration: underline;
+            }
+        } 
+    }   
+}
+
+
+
+@media screen and (max-width:768px) {
+    .loginSection{
+        min-height: calc(100vh - 50px);
+        .login{
+            width: 100%;
+          
+            padding: 15px;
+            margin: 30px 0;
+           
+           
+           
+        }   
+    }
+}
+

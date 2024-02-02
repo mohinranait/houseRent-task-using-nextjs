@@ -1,0 +1,38 @@
+@use "./utils/index.scss";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+}
+h1,h2,h3,h4,h5,h6,p,ul,li{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+   list-style: none;
+}
+
+body{
+    background-color: index.$bodyColor;
+}
+
+// container class
+.container{
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .container{
+        width: 97%;
+        margin: 0 auto;
+    }
+}

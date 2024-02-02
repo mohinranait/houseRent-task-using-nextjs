@@ -1,0 +1,118 @@
+
+@use "@/styles/utils/index";
+
+section#banner {
+    background-image: url('https://rant-house-project.web.app/assets/bg-h-1-ycFNi2HC.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: index.$darkColor;
+        opacity: 0.6;
+    }
+    div{
+        position: relative;
+        .bannerWrap{
+            height: 100vh;
+            display: flex ;
+            align-items: center;
+            justify-content: center;
+            .content-wrap{
+                display: flex;
+                gap: 20px;
+                flex-direction: column;
+                .title{
+                    font-size: 40px;
+                    font-weight: 800;
+                    text-align: center;
+                    color: index.$secondaryColor
+                };
+                .text{
+                    text-align: center;
+                    font-size: 18px;
+                    color: index.$secondaryColor    
+                }
+            }
+        }
+    }
+}
+
+// house grid section
+
+.sectionTitle{
+    margin-bottom: 28px;
+    .upline{
+        font-size: 25px;
+        font-weight: 700;
+        color: #1f1f1f;
+        text-align: center;
+    };
+    .subline{
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #1f1f1f;
+        text-align: center;
+    };
+}
+section#houseSection{
+    padding: 40px 0 20px 0 ;
+    div{
+        .houseGrid{
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            gap: 15px;
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    // Banner section
+    section#banner {
+       
+        div{
+            position: relative;
+            .bannerWrap{
+                height: 100vh;
+                display: flex ;
+                align-items: center;
+                justify-content: center;
+                .content-wrap{
+                    display: flex;
+                    gap: 20px;
+                    flex-direction: column;
+                    .title{
+                        font-size: 30px;
+                        font-weight: 700;
+                      
+                    };
+                    .text{
+                        text-align: center;
+                        font-size: 18px;
+                     
+                    }
+                }
+            }
+        }
+    }
+
+
+    // House seciton
+    section#houseSection{
+        padding: 40px 0 20px 0 ;
+        div{
+            .houseGrid{
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    }
+}

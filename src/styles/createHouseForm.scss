@@ -1,0 +1,120 @@
+@use "@/styles/utils/index";
+
+#houseForm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .sectionTitle{
+        font-size: 20px;
+        color: gray;
+        margin-bottom: 20px;
+    }
+    textarea{
+        width: 100%;
+        padding: 15px;
+        outline: none;
+        border-radius: 6px;
+    }
+    .section{
+        background-color: index.$secondaryColor;
+        padding: 20px;
+        border-radius: 7px;
+        box-shadow: index.$shadow;
+        .row-group{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            .input-group{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                label{
+                    font-size: 14px;
+                    color: gray;
+                    margin-bottom: 3px;
+                    display: inline-block;
+                }
+            }
+        };
+        .gridFive{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 15px;
+            label{
+                font-size: 14px;
+                color: gray;
+                margin-bottom: 3px;
+                display: inline-block;
+            }
+        }
+        .featureWrapper{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            .item{
+                padding: 8px 0 8px 8px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        };
+        .lastSection{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:768px) {
+    #houseForm{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .sectionTitle{
+            font-size: 20px;
+            color: gray;
+            margin-bottom: 20px;
+        }
+        textarea{
+            width: 100%;
+            padding: 15px;
+            outline: none;
+            border-radius: 6px;
+        }
+        .section{
+            .gridFive{
+                grid-template-columns: 1fr 1fr;
+              
+            }
+            .featureWrapper{
+                grid-template-columns: repeat(2,1fr);
+            };
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    #houseForm{
+       
+        textarea{
+            width: 100%;
+            padding: 15px;
+            outline: none;
+            border-radius: 6px;
+        }
+        .section{
+           
+            .gridFive{
+                grid-template-columns: 1fr;
+              
+            }
+            .featureWrapper{
+                grid-template-columns: 1fr;
+            };
+        }
+    }
+}

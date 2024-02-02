@@ -1,0 +1,13 @@
+
+@use "@/styles/utils/index";
+
+button{
+    text-align: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: index.$primaryColor;
+    color: index.$secondaryColor;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}

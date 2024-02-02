@@ -1,0 +1,8 @@
+@use "@/styles/utils/index";
+
+.ownerProfile{
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: index.$shadow;
+    background-color: index.$secondaryColor;
+}

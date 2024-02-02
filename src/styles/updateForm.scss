@@ -1,0 +1,24 @@
+
+
+// update from css code 
+.inputGroup{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    div{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .inputGroup{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 25px;
+        div{
+            width: 100%;
+        }
+    }
+}
+

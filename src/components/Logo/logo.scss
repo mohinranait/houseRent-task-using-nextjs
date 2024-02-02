@@ -1,0 +1,14 @@
+@use "@/styles/utils/index";
+
+a {
+    span{
+        font-size: 30px;
+        font-weight: 800;
+    };
+    span.first{
+        color: index.$primaryColor
+    };
+    span.second{
+        color: index.$darkColor
+    };
+}

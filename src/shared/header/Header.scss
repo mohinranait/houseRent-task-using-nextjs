@@ -1,0 +1,77 @@
+
+@use "@/styles/utils/index";
+
+
+header { 
+    box-shadow: 0px 0px 5px 5px #ddd;
+    .navWrap{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+       
+        .logoMenuWrap{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .humberIcon{
+                display: none;
+            }
+            ul.navLinks{
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                li a{
+                    padding: 10px 15px;
+                    border-radius: 10px;
+             
+                }
+            }
+        };
+
+        div .navRight{
+            li {
+                a {
+                    text-align: center;
+                    padding: 8px 10px;
+                    border-radius: 5px; 
+                    background-color: index.$primaryColor;
+                    color: index.$secondaryColor;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:768px) {
+    header { 
+        box-shadow: 0px 0px 5px 5px #ddd;
+        .navWrap{
+          
+           
+            .logoMenuWrap{
+                .humberIcon{
+                    display: block;
+                }
+                ul.navLinks{
+                    display: none;
+                }
+            };
+    
+            div .navRight{
+                li {
+                    a {
+                        text-align: center;
+                        padding: 8px 10px;
+                        border-radius: 5px; 
+                        background-color: index.$primaryColor;
+                        color: index.$secondaryColor;
+                    }
+                }
+            }
+        }
+    }    
+}

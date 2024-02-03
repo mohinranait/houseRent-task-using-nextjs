@@ -1,0 +1,66 @@
+@use "@/styles/utils/index";
+
+
+
+
+#mobileMenuToggle{
+    display: none;
+    width: 300px;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    background-color: index.$secondaryColor;
+    height: 100vh;
+    .wrap{
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 7px;
+            border-bottom: 1px solid #eeeeee;
+            margin-bottom: 10px;
+            .close{
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background-color: #eeeeee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+        .navs{
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            .navLink{
+                padding: 10px;
+                width: 100%;
+                border-radius: 4px;
+            }
+            .active{
+                background-color: index.$primaryColor;
+                color: index.$secondaryColor;
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:768px) {
+    #mobileMenuToggle{
+        display: block;
+    }
+    #mobileMenuToggle.active{
+        left: 0;
+        transition: all 0.3s;
+    }
+    #mobileMenuToggle.hidden{
+        left: -100%;
+        transition: all 0.3s;
+    }
+}

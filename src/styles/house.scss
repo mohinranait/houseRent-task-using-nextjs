@@ -137,6 +137,9 @@ section.section-house{
         }
         .right-bar{
             grid-column: span 1 / span 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             .bookAppinmentDiv{
                 background-color: index.$secondaryColor;
                 box-shadow: index.$shadow;
@@ -152,8 +155,61 @@ section.section-house{
                     display: flex;
                     flex-direction: column;
                     gap: 20px;
+                    textarea{
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 5px;
+                        outline: none;
+                        border: 1px solid index.$primaryColor;
+                    }
                     button{
                         width: 100%;
+                    }
+                }
+            };
+            .agentInformation{
+                background-color: index.$secondaryColor;
+                padding: 15px;
+                border-radius: 6px;
+                box-shadow: index.$shadow;
+                .header{
+                    padding-bottom: 10px ;
+                    border-bottom: 0.5px solid rgb(230, 230, 230) ;
+                    margin-bottom: 15px;
+                    .headerText{
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #4c4c4c;
+                    }
+                }
+                .authorInfo{
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 30px;
+                    .img img{
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                    };
+                    .agentName{
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #262626;
+                    }
+                }
+                .typoGroup{
+
+                    li.typo {
+                        display: flex;
+                        align-items: center;
+                        justify-content: start;
+                        padding: 15px 10px;
+                        gap: 15px;
+                        color: #484848;
+                        .icon{
+                            color: index.$primaryColor;
+                        }
                     }
                 }
             }

@@ -4,6 +4,7 @@
 
 header { 
     box-shadow: 0px 0px 5px 5px #ddd;
+    background-color: index.$secondaryColor;
     .navWrap{
         display: flex;
         justify-content: space-between;
@@ -15,22 +16,69 @@ header {
             align-items: center;
             gap: 10px;
             .humberIcon{
+                cursor: pointer;
                 display: none;
             }
             ul.navLinks{
                 display: flex;
                 align-items: center;
                 gap: 4px;
-                li a{
-                    padding: 10px 15px;
-                    border-radius: 10px;
-             
+                li {
+                    a{
+                        padding: 10px 15px;
+                        border-radius: 10px;
+                    };
+                    a.active{
+                        color: index.$primaryColor
+                    }
                 }
             }
         };
 
         div .navRight{
+            display: flex;
+            gap: 10px;
+            align-items: center;
             li {
+                position: relative;
+                .user{
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    position: relative;
+                    cursor: pointer;
+                    
+                    img{
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 2px solid rgb(241, 241, 241);
+                    };
+                    .dropwdown{
+                        position: absolute;
+                        right: 0;
+                        top: 100%;
+                        width: 170px;
+                        background-color: index.$secondaryColor;
+                        z-index: 9999;
+                        border-radius: 4px;
+                        border: 1px solid #f2f2f2;
+                        overflow: hidden;
+                        .items{
+                            width: 100%;
+                            padding: 10px 8px;
+                            display: inline-block;
+                            text-align: left;
+                            background-color: index.$secondaryColor;
+                            color: index.$darkColor;
+                        }
+                        :hover{
+                          
+                            background-color: index.$primaryColor;
+                            color: index.$secondaryColor;
+                        }
+                    }
+                }
                 a {
                     text-align: center;
                     padding: 8px 10px;
@@ -62,6 +110,11 @@ header {
             };
     
             div .navRight{
+                li .user{
+                    .userName {
+                        display: none;
+                    }
+                }
                 li {
                     a {
                         text-align: center;

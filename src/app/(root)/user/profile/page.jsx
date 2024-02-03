@@ -1,7 +1,7 @@
 import UpdateProfile from '@/components/forms/UpdateProfile';
 import React from 'react';
 
-const page = () => {
+const UserProfile = () => {
     return (
         <div>
             <div className='header'>
@@ -12,4 +12,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default UserProfile;

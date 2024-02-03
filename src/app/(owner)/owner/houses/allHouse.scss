@@ -48,10 +48,19 @@
                         display: flex;
                         gap: 8px;
                         align-items: center;
-                        button{
+                        .btn{
                             padding: 10px 15px;
                             border-radius: 6px;
                             border: none;
+                            cursor: pointer;
+                        }
+                        .edit{
+                            background-color: rgb(1, 138, 85);
+                            color: white;
+                        }
+                        .delete{
+                            background-color: index.$primaryColor;
+                            color: white;
                         }
                     }   
                     }

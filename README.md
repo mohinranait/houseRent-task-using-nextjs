@@ -1,6 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ### links
+- Live Link: https://rent-house-using-nextjs.vercel.app/
 - Client GitHub: https://github.com/mohinranait/houseRent-task-using-nextjs.git
 
 ## Getting Started

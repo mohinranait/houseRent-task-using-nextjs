@@ -4,9 +4,12 @@ import React from 'react';
 import "./userLayout.scss"
 import PrivateRoute from '@/redux/PrivateRoute';
 import { usePathname } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '@/redux/features/auth/authSlice';
 
 const UserLayout = ({children}) => {
     const pathname = usePathname();
+    const dispatch = useDispatch();
     return (
         <PrivateRoute>
             <section className="userLayout">
@@ -16,6 +19,7 @@ const UserLayout = ({children}) => {
                             <ul className="menus">
                                 <li><Link href="/user/dashboard" className={` ${pathname == '/user/dashboard' ? 'active':''} item` } >Bookings</Link></li>
                                 <li><Link href="/user/profile" className={` ${pathname == '/user/profile' ? 'active':''} item` } >Profile</Link></li>
+                                <li><span onClick={() => dispatch(logoutUser())} className={`logout  item` } >Logout</span></li>
                             </ul>
                         </div>
                         <div className="content-wrap">

@@ -20,6 +20,9 @@
         gap: 20px;
         .leftMenus{
             grid-column: span 1 / span 1;
+            .mobileheader{
+                display: none;
+            }
             .menus{
                 background-color: index.$secondaryColor;
                 height: calc(100vh - 60px) ;
@@ -48,6 +51,18 @@
                 align-items: center;
                 justify-content: space-between; 
                 margin-bottom: 20px;
+            
+                .forMobile{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    .humberIcon{
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                    }
+                }
                 .text{
                     font-weight: 600;
                     font-size: 18px;
@@ -85,10 +100,59 @@
         .ownerGrid{
             grid-template-columns: 1fr;
             .leftMenus{
-                display: none;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 220px;
+                transition: all 0.5s;
+                background-color: white;
+                .mobileheader{
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #eeeeee;
+                    .close{
+                        width: 35px;
+                        height: 35px;
+                        background-color: rgb(238, 238, 238);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                    }
+                }
+                .menus{
+                    background-color: transparent;
+                    box-shadow: none;
+                }
+            }
+            .leftMenus.active{
+                left: 0;
+                
             }
             .content-wrap{
                 border-radius: 5px;
+                .ownerHeader{
+                    padding: 10px 15px ;
+                    background-color: index.$secondaryColor;
+                    box-shadow: index.$shadow;
+                    border-radius: 7px;  
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between; 
+                    margin-bottom: 20px;
+                
+                    .forMobile{
+                        .humberIcon{
+                            display: block;
+                           
+                        }
+                    }
+                  
+                  
+                }
             }
         }
     }

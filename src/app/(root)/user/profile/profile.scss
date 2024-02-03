@@ -1,0 +1,9 @@
+@use "@/styles/utils/index";
+
+
+.updatepage{
+    background-color: index.$secondaryColor;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: index.$shadow;
+}

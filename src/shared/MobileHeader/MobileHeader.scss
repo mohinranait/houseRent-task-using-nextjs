@@ -40,9 +40,19 @@
                 width: 100%;
                 border-radius: 4px;
             }
+            .logout{
+                cursor: pointer;
+                width: 100%;
+                display: inline-block;
+            }
             .active{
                 background-color: index.$primaryColor;
                 color: index.$secondaryColor;
+            }
+            :hover{
+                background-color: index.$primaryColor;
+                color: index.$secondaryColor;
+                border-radius: 4px;
             }
         }
     }

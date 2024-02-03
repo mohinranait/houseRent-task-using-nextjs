@@ -46,7 +46,13 @@ const Header = ({isMobileToggle, setIsMobileToggle}) => {
                                         <Image width={80} height={80} alt='user' src={ user?.avater ? user?.avater : 'https://i.ibb.co/rwCtcWZ/mohinrana1.png'}  />
                                         {
                                             isDropDown &&  <ul className='dropwdown'>
-                                            <li><Link className='items' href={'/owner/dashboard'}>Dashboard</Link></li>
+                                            {
+                                                user?.role == 'user' ?
+                                                <li><Link className='items' href={'/user/dashboard'}>Dashboard</Link></li>
+                                                : 
+                                                <li><Link className='items' href={'/owner/dashboard'}>Dashboard</Link></li>
+                                            }
+                                          
                                             <li><span onClick={() => dispatch(logoutUser())} className='items'>Logout</span></li>
                                         </ul>
                                         }

@@ -17,11 +17,10 @@ const SingleHousePage = ({params}) => {
     useEffect(() => {
         const getHouse = async () => {
             const response = await  axiosPublic.get(`/house/${id}`);
-            console.log(response.data?.house);
             setHouse(response.data?.house);
         }
         getHouse()
-    },[])
+    },[id])
     return (
         <>
             <section className="section-house">

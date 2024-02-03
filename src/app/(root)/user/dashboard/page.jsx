@@ -1,13 +1,11 @@
 'use client'
 import useAxios from '@/hooks/useAxios';
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { FaCheckSquare } from 'react-icons/fa';
-import { IoBedOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 import "./userBookingCard.scss"
-import UserBookingCard from './UserBookingCard';
+import UserBookingCard from '@/components/card/UserBookingCard';
+import { toast } from 'react-toastify';
+
 const UserDashbaordPage = () => {
     const {user} = useSelector(state => state.user)
     const axios= useAxios();
@@ -21,27 +19,27 @@ const UserDashbaordPage = () => {
          if(user?._id) getBookings();
     },[])
 
-    // const deleteBooking = async (id) => {
-    //     console.log(id);
-    //     try {
-    //         const res = await axios.delete(`/remove-booking/${id}?userId=${user?._id}`);
-    //         if(res.data?.success){
-    //             const filters = bookings?.filter(book => book?._id !== id )
-    //             setBookings(filters)
-    //             toast.success("Remove success")
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const deleteBooking = async (id) => {
+
+        try {
+            const res = await axios.delete(`/remove-booking/${id}?userId=${user?._id}`);
+            if(res.data?.success){
+                const filters = bookings?.filter(book => book?._id !== id )
+                setBookings(filters)
+                toast.success("Remove success")
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
 
 
     return (
         <div>
             <div className='allBooking'>
-               <UserBookingCard />
-               <UserBookingCard />
-               <UserBookingCard />
+                {
+                    bookings?.map(house => <UserBookingCard key={house?._id} deleteBooking={deleteBooking} house={house} /> )
+                }
             </div>
         </div>
     );

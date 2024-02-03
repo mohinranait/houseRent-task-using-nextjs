@@ -7,15 +7,17 @@ import useAxios from '@/hooks/useAxios';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 const BookAppinmentForm = ({house}) => {
+    const axiosPublic = useAxiosPublic()
     const {user} = useSelector(state => state.user);
-
+    // const [house, setHouse] = useState({})
     const [loading, setLoading] = useState(false);
     const [book, setBook] = useState(true);
     const [error, setError] = useState('')
     const axios = useAxios();
-    console.log(house);
+  
     const [booking, setBooking] = useState({
         user: user?._id,
         name: user?.name,
@@ -28,7 +30,7 @@ const BookAppinmentForm = ({house}) => {
         endMonth: '',
         houseId: house?._id,
         price: house?.price || '',
-        houseName: house?.name || '',
+        houseName: house?.name,
         houseAddress: house?.address || '',
         houseCity: house?.city || '',
         houseImage: house?.images?.length > 0 ? house?.images[0] : '',
@@ -42,7 +44,7 @@ const BookAppinmentForm = ({house}) => {
     const pathname = usePathname();
     const router = useRouter();
 
-    
+
 
     function validateBDPhoneNumber(phoneNumber) {
         let pattern = /^(?:\+8801|01)[3-9]\d{8}$/;
@@ -72,7 +74,10 @@ const BookAppinmentForm = ({house}) => {
         }
 
 
+
+
         try {
+            console.log(booking);
             setLoading(true)
             const res = await axios.post(`/booking?userId=${user?._id}`, booking);
 
@@ -96,11 +101,37 @@ const BookAppinmentForm = ({house}) => {
         const existsBooking = async () => {
             const res  = await axios.get(`/exists-booking/${house?._id}?userId=${user?._id}`)
             setBook(res.data?.booking);
-            console.log(res.data?.booking);
         }
         existsBooking();
-    },[])
+    },[house])
 
+    useEffect(() => {
+        setBooking({
+            user: user?._id,
+            name: user?.name,
+            email: user?.email,
+            phone: user?.phone || '',
+            familyMember: '',
+            children: '',
+            message: '',
+            startMonth: '',
+            endMonth: '',
+            houseId: house?._id,
+            price: house?.price || '',
+            houseName: house?.name,
+            houseAddress: house?.address || '',
+            houseCity: house?.city || '',
+            houseImage: house?.images?.length > 0 ? house?.images[0] : '',
+            bedrooms:house?.bedrooms,
+            bathrooms:house?.bathrooms,
+            roomSize:house?.roomSize,
+            garages:house?.garages,
+            extraFeatures: house?.extraFeatures,
+            houseOwner : house?.owner
+        })
+    },[house])
+
+    console.log(booking);
 
     return (
         <form onSubmit={handleAppoinment} className='form'>
@@ -146,7 +177,7 @@ const BookAppinmentForm = ({house}) => {
                 ></textarea>
             </div>
             <div>
-                <PrimaryButton  type={ book ? 'button' : 'submit'} >
+                <PrimaryButton  type={'submit'} >
                     Book Appoinment
                 </PrimaryButton>
             </div>

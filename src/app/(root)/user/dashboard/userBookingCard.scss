@@ -16,6 +16,23 @@
             grid-template-columns: repeat(5,1fr);
             .img{
                 grid-column: span 2/ span 2;
+                position: relative;
+                .payStatus{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    font-size: 14px;
+                    padding: 5px 8px;
+                    display: inline-block;
+                }
+                .unpaid{
+                    color: white;
+                    background-color: index.$primaryColor;
+                }
+                .paid {
+                    background-color: rgb(3, 137, 74);
+                    color: white;
+                }
                 img{
                     width: 100%;
                 }
@@ -91,6 +108,11 @@
                 padding: 10px 15px;
                 border-radius: 4px;
                 border: none;
+            }
+            .payment{
+                background-color: rgb(1, 126, 80);
+                color: white;
+                margin-right: 5px;
             }
             .group{
                 display: flex;

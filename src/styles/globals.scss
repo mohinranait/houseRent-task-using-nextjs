@@ -8,6 +8,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+input, textarea{
+    font-size: 16px;
+}
+button{
+    font-size: 16px;
+    font-weight: 600;
+}
+select{
+    font-size: 16px;
+}
 a{
     text-decoration: none;
     display: inline-block;
@@ -29,6 +39,10 @@ body{
 .container{
     width: 95%;
     margin: 0 auto;
+}
+
+main{
+    min-height: 100vh;
 }
 
 

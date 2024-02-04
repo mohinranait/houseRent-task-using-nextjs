@@ -11,7 +11,9 @@ const MainLayout = ({children}) => {
     return (
         <>
             <Header isMobileToggle={isMobileToggle} setIsMobileToggle={setIsMobileToggle} />
-            {children}
+            <main>
+                {children}
+            </main>
             <Footer />
             <MobileHeader isMobileToggle={isMobileToggle} setIsMobileToggle={setIsMobileToggle} />
         </>

@@ -1,5 +1,5 @@
-'use client'
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import '@/styles/house.scss'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaSquareCheck } from "react-icons/fa6";
@@ -7,20 +7,20 @@ import { IoMdCall } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import Image from 'next/image';
 import BookAppinmentForm from '@/components/forms/BookAppinmentForm';
-import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 
-const SingleHousePage = ({params}) => {
-    const axiosPublic = useAxiosPublic()
+export const metadata = {
+    title: "House appoinment management ",
+    description: "",
+};
+
+const SingleHousePage = async ({params}) => {
+
     const  {id} = params;
-    const [house, setHouse] = useState({});
-    useEffect(() => {
-        const getHouse = async () => {
-            const response = await  axiosPublic.get(`/house/${id}`);
-            setHouse(response.data?.house);
-        }
-        getHouse()
-    },[id])
+    const res = await fetch(`https://rent-houses-server-nextjs.vercel.app/api/v1/house/${id}`)
+    const {house} = await res.json()
+    metadata.title = house?.name;
+   
     return (
         <>
             <section className="section-house">
@@ -44,12 +44,13 @@ const SingleHousePage = ({params}) => {
                                 <div className='imagesWrap'>
                                     <div>
                                         <div className='bigImg'>
-                                            <Image src={ house?.images?.length > 0 ? house?.images[0] : 'https://i.ibb.co/4YhRsVF/s-2.jpg'} width={800} height={600} className="" alt="a" />
+                                            {/* <Image src={ img ? img : house?.images?.length > 0 && house?.images[0] } width={800} height={600} className="" alt="a" /> */}
+                                            <Image src={ house?.images[0] } width={800} height={600} className="" alt="a" />
                                         </div>
                                     </div>
                                     <div className="imagesGallary">
                                         {
-                                            house?.images?.map((img,i) =>  <span key={i} className="smallImage">
+                                            house?.images?.map((img,i) =>  <span  key={i} className="smallImage">
                                             <Image src={ img || 'https://i.ibb.co/4YhRsVF/s-2.jpg'} width={100} height={100} alt={''} />
                                         </span> )
                                         }
@@ -94,7 +95,7 @@ const SingleHousePage = ({params}) => {
                         <div className="right-bar">
                             <div className='bookAppinmentDiv'>
                                 <p className='textTitle'>Booking Inforamtion</p>
-                                <BookAppinmentForm house={house} />
+                                <BookAppinmentForm id={id} />
                             </div>
                             {/* Agent information */}
                             <div className='agentInformation'>

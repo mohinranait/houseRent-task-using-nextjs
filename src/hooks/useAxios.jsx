@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const instance = axios.create({
     baseURL: 'https://rent-houses-server-nextjs.vercel.app/api/v1',
+    // baseURL: 'http://localhost:5000/api/v1',
     withCredentials: true
 })
 

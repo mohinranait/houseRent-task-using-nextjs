@@ -4,7 +4,7 @@ import React from 'react';
 
 const OwnerHouseRows = ({house,index,deleteHouse}) => {
     const {name,images,_id} = house;
-    console.log(house);
+
     return (
         <>
             <tr>

@@ -1,13 +1,16 @@
-
+@use "@/styles/utils/index";
 
 .selectTag {
-    padding: 10px 12px;
+    padding: 13px 12px;
     outline: none;
-    border: 1px solid red;
+    border: 1px solid rgb(228, 228, 228);
     border-radius: 6px;
     transition: all 0.5s;
     width: 100%;
-    :focus-visible{
-        border: 1px solid green;
-    }
+    font-size: 16px;
+    color: rgb(56, 56, 56);
+    
+}
+.selectTag:focus-visible{
+    border: 1px solid index.$primaryColor;
 }

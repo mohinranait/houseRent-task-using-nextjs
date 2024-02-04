@@ -29,7 +29,9 @@ const LoginForm = () => {
             const res = await axios.post(`/login`, userInfor)
             if(res.data.success){
                 dispatch(addUser(res.data.user))
-                router.push("/user/dashboard")
+                const path = JSON.parse(localStorage.getItem('path'));
+                router.push(path ? path : res.data?.user?.role == 'user' ? '/user/dashboard' : '/owner/dashboard' )
+                localStorage.removeItem('path')
                 setLoading(false)
             }
         } catch (error) {

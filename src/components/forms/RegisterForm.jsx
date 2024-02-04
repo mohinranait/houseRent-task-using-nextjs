@@ -20,9 +20,11 @@ const RegisterForm = () => {
         const email = form.email.value;
         const phone = form.phone.value;
         const password = form.password.value;
+        const role = form.role.value;
 
         const userInfor = {
-            name, email, phone, password
+            name, email, phone, password,
+            role : role ? role : 'user',
         }
 
         try {
@@ -53,7 +55,15 @@ const RegisterForm = () => {
                 </div>    
                 <div>
                     <Input type={'password'} name={'password'} placeholder={'Password'} />
-                </div>    
+                </div>   
+                <div className='role'>
+                    <label htmlFor="user" className='roleLabel'>
+                        <input type="radio" id='user' name='role' value={'user'}  /> User 
+                    </label> 
+                    <label htmlFor="owner" className='roleLabel'>
+                        <input type="radio" id='owner' name='role' value={'owner'} /> Owner 
+                    </label>
+                </div> 
                 <div>
                     <PrimaryButton type={'submit'}>
                         <span className="">  {loading ? 'Loading...' : 'Register'}</span>

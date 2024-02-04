@@ -9,13 +9,14 @@ import { usePathname, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 
-const BookAppinmentForm = ({house}) => {
+const BookAppinmentForm = ({id}) => {
     const axiosPublic = useAxiosPublic()
     const {user} = useSelector(state => state.user);
-    // const [house, setHouse] = useState({})
+    const [house, setHouse] = useState({});
     const [loading, setLoading] = useState(false);
     const [book, setBook] = useState(true);
     const [error, setError] = useState('')
+    const [houseAvilable, setHouseAvailable] = useState(true)
     const axios = useAxios();
   
     const [booking, setBooking] = useState({
@@ -39,12 +40,13 @@ const BookAppinmentForm = ({house}) => {
         roomSize:house?.roomSize,
         garages:house?.garages,
         extraFeatures: house?.extraFeatures,
-        houseOwner : house?.owner
+        houseOwner : house?.owner,
+        totalMonths : null 
     })
     const pathname = usePathname();
     const router = useRouter();
 
-
+    
 
     function validateBDPhoneNumber(phoneNumber) {
         let pattern = /^(?:\+8801|01)[3-9]\d{8}$/;
@@ -62,24 +64,37 @@ const BookAppinmentForm = ({house}) => {
             router.push('/login')
         }
 
-        const {phone,children, familyMember} = booking;
+        const {phone,children, familyMember,totalMonths,startMonth} = booking;
         if (!validateBDPhoneNumber(phone)) {
             return toast.warning("BD number is invalid") 
         }
 
        
-        if(phone?.length == 0 || children == 0 || familyMember == 0  ){
+        if(phone?.length == 0 || children == 0 || familyMember == 0 || !totalMonths || !startMonth ){
             toast.warning("All fileds required");
             return;
         }
 
+      
 
+        const startDate = new Date(startMonth);
+        // const startDateFormate = new Date(startMonth);
+        startDate.setMonth(startDate.getMonth() + totalMonths )
+        const dateFormate = startDate.toLocaleString().split(',')[0];
+        // console.log(startDateFormate.toLocaleDateString(),house?.bookedDate);
 
+        if( startDate.toLocaleDateString() < house?.bookedDate ){
+            toast.warning(`Select your start date after ${house?.bookedDate}`)
+            return;
+        }
 
         try {
-            console.log(booking);
             setLoading(true)
-            const res = await axios.post(`/booking?userId=${user?._id}`, booking);
+            const bookingObje = {
+                ...booking,
+                endMonth: dateFormate
+            }
+            const res = await axios.post(`/booking?userId=${user?._id}`, bookingObje);
 
             if(res.data?.message === 'Created'){
                 toast.success("Booking Successfull")
@@ -127,61 +142,109 @@ const BookAppinmentForm = ({house}) => {
             roomSize:house?.roomSize,
             garages:house?.garages,
             extraFeatures: house?.extraFeatures,
-            houseOwner : house?.owner
+            houseOwner : house?.owner,
+            totalMonths : 1,
         })
     },[house])
 
-    console.log(booking);
+    
+    useEffect(() => {
+        const getHouse = async () => {
+            const response = await  axiosPublic.get(`/house/${id}`);
+            setHouse(response.data?.house);
+        }
+        getHouse()
+    },[id])
+
+
+   
+
+    useEffect(() => {
+        const today = new Date().toLocaleString().split(',')[0];
+        const bookedLastDate = house?.bookedDate;
+
+        if(today > bookedLastDate){
+            setHouseAvailable(true)
+        }else{
+            setHouseAvailable(false)
+        }
+
+    },[])
+    
 
     return (
-        <form onSubmit={handleAppoinment} className='form'>
-            <div>
-                <Input type={'text'} value={user?.name || ''} readonlyVal={true} placeholder={'Full name'} />
-            </div>
-            <div>
-                <Input type={'email'} value={user?.email || ''} readonlyVal={true} placeholder={'Email'} />
-            </div>
-            <div>
-                <Input 
-                type={'number'} 
-                value={user?.phone || ''} 
-                placeholder={'Number'} 
-                onChange={e => setBooking({...booking, phone: e.target.value})}
-                />
-            </div>
-            <div>
-                <Input 
-                type={'number'} 
-                placeholder={'Total family member'} 
-                value={booking?.familyMember}
-                onChange={e => setBooking({...booking, familyMember: Number(e.target.value)})}
-                />
-            </div>
-            <div>
-                <Input 
-                type={'number'} 
-                placeholder={'Total children'} 
-                value={booking?.children}
-                onChange={e => setBooking({...booking, children: Number(e.target.value)})}
-                />
-            </div>
-            <div>
-                <textarea 
-                name="" 
-                id="" 
-                placeholder='Message...' 
-                cols="30" 
-                rows="3"
-                value={booking?.message}
-                onChange={e => setBooking({...booking, message: e.target.value})}
-                ></textarea>
-            </div>
-            <div>
-                <PrimaryButton  type={'submit'} >
-                    Book Appoinment
-                </PrimaryButton>
-            </div>
-        </form>
+        <>
+       
+            <form onSubmit={handleAppoinment} className='form'>
+                <div>
+                    <label htmlFor="" className='label'>Start Month</label>
+                    <Input 
+                    type={'date'} 
+                    value={user?.startMonth || ''} 
+                    placeholder={'Start Date'} 
+                    onChange={e => setBooking({...booking, startMonth: e.target.value})}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="" className='label'>Total Months </label>
+                    <Input 
+                    type={'number'} 
+                    value={booking?.totalMonths || ''} 
+                    min={1}
+                    placeholder={'Total months'} 
+                    onChange={e => setBooking({...booking, totalMonths: Number(e.target.value) })}
+                    />
+                </div>
+                <div>
+                    <Input 
+                    type={'number'} 
+                    value={user?.phone || ''} 
+                    placeholder={'Number'} 
+                    onChange={e => setBooking({...booking, phone: e.target.value})}
+                    />
+                </div>
+                <div>
+                    <Input 
+                    type={'number'} 
+                    placeholder={'Total family member'} 
+                    value={booking?.familyMember}
+                    onChange={e => setBooking({...booking, familyMember: Number(e.target.value)})}
+                    />
+                </div>
+                <div>
+                    <Input 
+                    type={'number'} 
+                    placeholder={'Total children'} 
+                    value={booking?.children}
+                    onChange={e => setBooking({...booking, children: Number(e.target.value)})}
+                    />
+                </div>
+                <div>
+                    <textarea 
+                    name="" 
+                    id="" 
+                    placeholder='Message...' 
+                    cols="30" 
+                    rows="3"
+                    value={booking?.message}
+                    onChange={e => setBooking({...booking, message: e.target.value})}
+                    ></textarea>
+                </div>
+                {
+                    !houseAvilable &&   <div className='alertBooking'>
+                    <p>This house is booked through {house?.bookedDate} </p>
+                </div>
+                }
+              
+                <div>
+                    <PrimaryButton  type={'submit'} >
+                        {
+                            loading ? "Loading..." : 'Book Appoinment'
+                        }
+                    </PrimaryButton>
+                </div>
+            </form>
+        </>
     );
 };
 

@@ -7,7 +7,7 @@ import "./ownerLayout.scss";
 import PrivateRoute from '@/redux/PrivateRoute';
 import { useSelector } from 'react-redux';
 import { usePathname } from 'next/navigation';
-import { LuDoorClosed, LuMenu } from 'react-icons/lu';
+import { LuMenu } from 'react-icons/lu';
 import { IoCloseSharp } from 'react-icons/io5';
 
 
@@ -29,10 +29,14 @@ const OwnerLayout = ({children}) => {
                             </div>
                             <ul className="menus">
                                 <li><Link onClick={() => setIsToggleHumber(false)}  href="/owner/dashboard" className={`item ${pathname=='/owner/dashboard' ? 'active':''} `}>Dashboard</Link></li>
+                                <li><Link onClick={() => setIsToggleHumber(false)}  href="/owner/bookings" className={`item ${pathname=='/owner/bookings' ? 'active':''} `}>Bookings</Link></li>
                                 <li><Link onClick={() => setIsToggleHumber(false)}  href="/owner/create-house" className={`item ${pathname=='/owner/create-house' ? 'active':''} `}>New house</Link></li>
                                 <li><Link onClick={() => setIsToggleHumber(false)}  href="/owner/houses" className={`item ${pathname=='/owner/houses' ? 'active':''} `}>House lists</Link></li>
                                 <li><Link onClick={() => setIsToggleHumber(false)}  href="/owner/profile" className={`item ${pathname=='/owner/profile' ? 'active':''} `}>Profile</Link></li>
+                                <li><Link onClick={() => setIsToggleHumber(false)}  href="/" className={`item ${pathname=='/' ? 'active':''} `}>Home</Link></li>
                             </ul>
+                           
+                            
                         </div>
                         <div className="content-wrap">
                             <div className='ownerHeader'>

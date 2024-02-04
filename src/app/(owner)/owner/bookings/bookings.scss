@@ -1,0 +1,75 @@
+@use "@/styles/utils/index";
+
+
+
+.allBookings{
+    background-color: index.$secondaryColor;
+    padding: 20px;
+    box-shadow: index.$shadow;
+    border-radius: 8px;
+    .ownerTable{
+        overflow-x: auto;
+        table{
+            width: 100%;
+            min-width: 800px;
+            thead{
+                tr{
+                    th{
+                        padding: 8px 0 8px 8px;
+                        text-align: left;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        span{
+                            font-size: 14px;
+                            color: rgb(42, 42, 42);
+                        }
+                        padding: 8px 0 8px 8px;
+                        .info{
+                            display: flex;
+                            gap: 8px;
+                            align-items: center;
+                            span{
+                                font-size: 18px;
+                                font-weight: 500;
+                            }
+                            img{
+                                width: 70px;
+                                height: 70px;
+                                border-radius: 4px;
+
+                            }
+                        };
+                       
+                       
+                    };
+                    .action{
+                       width: 120px;  
+                       .btn-group{
+                        display: flex;
+                        gap: 8px;
+                        align-items: center;
+                        .btn{
+                            padding: 10px 15px;
+                            border-radius: 6px;
+                            border: none;
+                            cursor: pointer;
+                        }
+                        .edit{
+                            background-color: rgb(1, 138, 85);
+                            color: white;
+                        }
+                        .delete{
+                            background-color: index.$primaryColor;
+                            color: white;
+                        }
+                    }   
+                    }
+                }
+            }
+        }
+    }
+}

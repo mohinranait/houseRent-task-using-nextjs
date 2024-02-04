@@ -21,27 +21,34 @@ const BookingOwnerPage = () => {
  
 
     return (
-        <div className='allBookings'>
-            <div className='ownerTable'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>User</th>
-                            <th>House</th>
-                            <th>Month duration</th>
-                            <th>Member</th>
-                            <th>Attest</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            bookings?.map((booking, index) => <OwnerBookingRows key={index} index={index} booking={booking} /> )
-                        }
-                    </tbody>
-                </table>
+        <>
+            <div className='pageTitleUser'>
+                <p>Booked house</p>
             </div>
-        </div>
+   
+            <div className='allBookings'>
+            
+                <div className='ownerTable'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>House</th>
+                                <th>Month duration</th>
+                                <th>Member</th>
+                                <th>Attest</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                bookings?.map((booking, index) => <OwnerBookingRows key={index} index={index} booking={booking} /> )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </>
     );
 };
 

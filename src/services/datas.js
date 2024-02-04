@@ -14,6 +14,9 @@ const data = {
         {_id: 5, label:"Bedding", value:"Bedding"},
         {_id: 6, label:"Parking", value:"Parking"},
         {_id: 7, label:"Dishwasher", value:"Dishwasher"},
+        {_id: 8, label:"Silinder", value:"Silinder"},
+        {_id: 9, label:"Lift", value:"Lift"},
+        {_id: 10, label:"High Secutity", value:"High Secutity"},
     ]
 }
 

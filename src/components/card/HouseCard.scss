@@ -6,7 +6,7 @@
     background-color: index.$secondaryColor;
     border-radius: 8px;
     overflow: hidden;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 50%);
     gap: 10px;
     .img{
         img{
@@ -72,6 +72,17 @@
             }
         }
     }
+
+    .swiper-button-next:after,.swiper-button-prev::after{
+        font-size: 15px;
+        color: #5e5e5e;
+    }
+    .swiper-button-next,.swiper-button-prev {
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 50%;
+    }
    
 }
 
@@ -86,7 +97,7 @@
     .house-card{
         display: grid;
         border-radius: 8px;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         gap: 10px;
         .img{
             img{

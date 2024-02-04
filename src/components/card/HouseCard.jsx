@@ -1,5 +1,5 @@
 import React from 'react';
-import "./HouseCard.scss"
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { CiHeart, CiShare2 } from "react-icons/ci";
@@ -7,15 +7,30 @@ import { MdCompareArrows } from "react-icons/md";
 import { IoBedOutline, IoCarSportOutline } from "react-icons/io5";
 import { FaBath, FaMapMarkerAlt } from "react-icons/fa";
 import { LuTriangleRight } from "react-icons/lu";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import "./HouseCard.scss"
 const HouseCard = ({house}) => {
     const {images, name,price,city, address,bathrooms,bedrooms, roomSize,garages, _id  } = house || {};
-    console.log(house);
+
     return (
  
             <div className='house-card'>
+
                 <div className='img'>
-                    <Image src={images?.length > 0 ? images[0] : "https://i.ibb.co/4YhRsVF/s-2.jpg"} width={800} height={300} alt="card" />
+                    <div>
+                        <Swiper navigation={true} modules={[Navigation]} className="mySwiper" >
+                        {
+                            images?.map((img,idx) =>   <SwiperSlide key={idx}>
+                            <div>
+                                <Image src={img}  width={800} height={300} alt="card" />
+                            </div>
+                            </SwiperSlide> )
+                        }
+                        </Swiper>
+                    </div>
                 </div>
                 <div className='content'>
                     <div>

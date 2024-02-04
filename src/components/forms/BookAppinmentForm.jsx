@@ -230,7 +230,7 @@ const BookAppinmentForm = ({id}) => {
                     onChange={e => setBooking({...booking, message: e.target.value})}
                     ></textarea>
                 </div>
-                {
+                { house?.bookedDate && 
                     !houseAvilable &&   <div className='alertBooking'>
                     <p>This house is booked through {house?.bookedDate} </p>
                 </div>
@@ -239,7 +239,7 @@ const BookAppinmentForm = ({id}) => {
                 <div>
                     <PrimaryButton  type={'submit'} >
                         {
-                            loading ? "Loading..." : 'Book Appoinment'
+                            loading ? "Loading..." : `Booking Appoinment ($ ${house?.price * booking?.totalMonths})`
                         }
                     </PrimaryButton>
                 </div>

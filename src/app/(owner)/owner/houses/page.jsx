@@ -37,27 +37,34 @@ const OwnerAllHouse = () => {
 
 
     return (
-        <div className='allHouse'>
-            <div className='ownerTable'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>House</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            houses?.map((house,index) => <OwnerHouseRows key={house?._id} index={index} house={house} deleteHouse={deleteHouse} /> )
-                        }
-
-                       
-                    </tbody>
-                </table>
+        <>
+            <div className='pageTitleUser'>
+                <p>My house lists</p>
             </div>
-        </div>
+        
+            <div className='allHouse'>
+                <div className='ownerTable'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>House</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                houses?.map((house,index) => <OwnerHouseRows key={house?._id} index={index} house={house} deleteHouse={deleteHouse} /> )
+                            }
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </>
     );
 };
 

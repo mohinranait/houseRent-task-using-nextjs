@@ -2,9 +2,13 @@
 
 @use "@/styles/utils/index";
 
+.containerad{
+    width: 98%;
+    margin: 0 auto;
+}
 
 .ownerLayout{
-    margin: 20px 0;
+    margin: 15px 0;
     .header{
         margin-bottom: 20px;
         .heading{
@@ -25,7 +29,7 @@
             }
             .menus{
                 background-color: index.$secondaryColor;
-                height: calc(100vh - 60px) ;
+                height: calc(100vh - 30px) ;
                 box-shadow: index.$shadow;
                 padding: 15px;
                 border-radius: 5px;
@@ -33,6 +37,9 @@
                     padding: 10px 10px;
                     width: 100%;
                     border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    gap: 7px
                 };
                 .active{
                     background-color: index.$primaryColor;
@@ -51,7 +58,14 @@
                 align-items: center;
                 justify-content: space-between; 
                 margin-bottom: 20px;
-            
+                .action{
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    li{
+                        cursor: pointer;
+                    }
+                }
                 .forMobile{
                     display: flex;
                     align-items: center;
@@ -143,7 +157,16 @@
                     align-items: center;
                     justify-content: space-between; 
                     margin-bottom: 20px;
-                
+                    .action{
+                        gap: 8px;
+                        li{
+                            cursor: pointer;
+                            span{
+                                display: none;
+                            }
+                        }
+                    }
+                   
                     .forMobile{
                         .humberIcon{
                             display: block;

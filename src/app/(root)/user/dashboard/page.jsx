@@ -57,6 +57,9 @@ const UserDashbaordPage = () => {
 
     return (
         <div>
+            <div className='pageTitleUser'>
+                <p>My booking lists</p>
+            </div>
             <div className='allBooking'>
                 {
                     bookings?.map(house => <UserBookingCard 

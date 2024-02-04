@@ -7,6 +7,7 @@ import { IoMdCall } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import Image from 'next/image';
 import BookAppinmentForm from '@/components/forms/BookAppinmentForm';
+import ImageGallary from './ImageGallary';
 
 
 export const metadata = {
@@ -41,22 +42,7 @@ const SingleHousePage = async ({params}) => {
 
                                 <p className="gallaryText">Gallery</p>
 
-                                <div className='imagesWrap'>
-                                    <div>
-                                        <div className='bigImg'>
-                                            {/* <Image src={ img ? img : house?.images?.length > 0 && house?.images[0] } width={800} height={600} className="" alt="a" /> */}
-                                            <Image src={ house?.images[0] } width={800} height={600} className="" alt="a" />
-                                        </div>
-                                    </div>
-                                    <div className="imagesGallary">
-                                        {
-                                            house?.images?.map((img,i) =>  <span  key={i} className="smallImage">
-                                            <Image src={ img || 'https://i.ibb.co/4YhRsVF/s-2.jpg'} width={100} height={100} alt={''} />
-                                        </span> )
-                                        }
-                                      
-                                    </div>
-                                </div>
+                                <ImageGallary house={house} />
                             </div>
 
 

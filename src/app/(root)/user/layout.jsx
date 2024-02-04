@@ -18,6 +18,7 @@ const UserLayout = ({children}) => {
                         <div className="leftMenus">
                             <ul className="menus">
                                 <li><Link href="/user/dashboard" className={` ${pathname == '/user/dashboard' ? 'active':''} item` } >Bookings</Link></li>
+                                <li><Link href="/user/favorite" className={` ${pathname == '/user/favorite' ? 'active':''} item` } >Favorites </Link></li>
                                 <li><Link href="/user/profile" className={` ${pathname == '/user/profile' ? 'active':''} item` } >Profile</Link></li>
                                 <li><span onClick={() => dispatch(logoutUser())} className={`logout  item` } >Logout</span></li>
                             </ul>

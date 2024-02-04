@@ -5,10 +5,10 @@ import PrimaryButton from '../buttons/primary/PrimaryButton';
 
 import { useRouter } from 'next/navigation';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
+import { toast } from 'react-toastify';
 
 const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
     const axiosPublic = useAxiosPublic();
     const router = useRouter()
 
@@ -21,6 +21,10 @@ const RegisterForm = () => {
         const phone = form.phone.value;
         const password = form.password.value;
         const role = form.role.value;
+        if(!name) return toast.warning("Name is require");
+        if(!email) return toast.warning("Email is require");
+        if(!phone) return toast.warning("Phone is require");
+        if(!password) return toast.warning("Password is require");
 
         const userInfor = {
             name, email, phone, password,
@@ -35,7 +39,7 @@ const RegisterForm = () => {
                 setLoading(false)
             }
         } catch (error) {
-            setError(error.message)
+            toast.error(error.message)
         }finally{
             setLoading(false)
         }

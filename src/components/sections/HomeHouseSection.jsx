@@ -5,28 +5,27 @@ import Input from '../inputs/Input';
 import data from '@/services/datas';
 import "@/styles/selectTag.scss"
 import "@/styles/filterBox.scss"
-import useAxiosPublic from '@/hooks/useAxiosPublic';
-const min=0;
-const max = 200000
+import { useDispatch, useSelector } from 'react-redux';
+import { getHousesWithFilter } from '@/redux/features/house/houseSlice';
+
 
 
 const HomeHouseSection = () => {
-    const [range, setRange] = useState([min,max])
-    const [houses, setHouses] = useState([]);
-    const [toggleFilter, setToggleFilter] = useState(false)
+    const {houses} = useSelector(state => state.houses )
+
     const [filter, setFilter] = useState(true)
     const [search, setSearch] = useState('');
     const [city, setCity] = useState(null);
     const [bedroom, setBedroom] = useState(null);
     const [bathroom, setBathroom] = useState(null);
-    const axiosPublic = useAxiosPublic();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const getHouses = async () => {
-            const res = await axiosPublic.get(`/houses?city=${city}&bedroom=${bedroom}&bathroom=${bathroom}&search=${search}&priceRange=${range[0]}-${range[1]}`);
-            setHouses(res.data?.houses);
+        const obj = {
+            city, bedroom,bathroom,search
         }
-        getHouses();
+        dispatch(getHousesWithFilter(obj))
+
     },[filter])
 
     const handleChange = (e) => {
@@ -46,10 +45,7 @@ const HomeHouseSection = () => {
     const handleFilter  = () => {
         setFilter(!filter)
     }
-    // handle price range
-    const handleRange = e => {
-        setRange(e)
-    }
+
 
     return (
         <section id='houseSection'>
@@ -58,7 +54,7 @@ const HomeHouseSection = () => {
                     <p className='text'>Filter by options</p>
                     <div className='filterGrid'>
                         <div>
-                            <Input type={'text'}  onChange={handleSearch} placeholder={"Search by name"} />
+                            <Input type={'search'}  onChange={handleSearch} placeholder={"Search by name"} />
                         </div>
                         <div>
                             <select name="" onChange={handleChange} className='selectTag' id="">

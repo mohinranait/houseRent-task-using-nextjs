@@ -9,12 +9,12 @@ import { LuTriangleRight } from 'react-icons/lu';
 import { BsCalendar2Date } from "react-icons/bs";
 
 const UserBookingCard = ({house,deleteBooking,handlePayment}) => {
-    const {houseImage,houseName,extraFeatures,payStatus,houseId, startMonth,familyMember,price,children,_id,totalMonths, houseAddress,bedrooms,bathrooms,roomSize,garages,endMonth} = house || {};
+    const {houseImage,houseName,extraFeatures,payStatus,houseId, startMonth,houseCity,familyMember,price,children,_id,totalMonths, houseAddress,bedrooms,bathrooms,roomSize,garages,endMonth} = house || {};
     
     
     return (
         <>
-            <div className='bookingCard'>
+                <div className='bookingCard'>
                     <div className='topBar'>
                         <div className='img'>
                             {
@@ -27,7 +27,7 @@ const UserBookingCard = ({house,deleteBooking,handlePayment}) => {
                         </div>
                         <div className='content'>
                             <p className='name'><Link href={`/house/${houseId}`}>{houseName}</Link></p>
-                            <p className='location'>Dhaa, Bangkadesh</p>
+                            <p className='location'>{houseAddress}, {houseCity}</p>
                             <ul className='featuresGroup'>
                                 <li className='feature'><IoBedOutline /> {bedrooms} Bedrooms</li>
                                 <li className='feature'><FaBath /> {bathrooms} Bathrooms</li>
@@ -41,7 +41,7 @@ const UserBookingCard = ({house,deleteBooking,handlePayment}) => {
                         </div>
                         <ul className='mainFeature'>
                             {
-                                extraFeatures?.map((item,index) =>   <li key={index}><FaCheckSquare className='icon' size={22} />{item}</li>)
+                                extraFeatures?.slice(0,5)?.map((item,index) =>   <li key={index}><FaCheckSquare className='icon' size={22} />{item}</li>)
                             }
                         </ul>
                     </div>

@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addUser } from '@/redux/features/auth/authSlice';
 import useAxios from '@/hooks/useAxios';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
     const axios = useAxios();
     const router = useRouter();
     const dispatch = useDispatch();
@@ -20,6 +20,9 @@ const LoginForm = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        if(!email) return toast.warning("Email is required")
+        if(!password) return toast.warning("Password is required")
+
         const userInfor = {
             email, password
         }
@@ -27,15 +30,18 @@ const LoginForm = () => {
         try {
             setLoading(true)
             const res = await axios.post(`/login`, userInfor)
+
             if(res.data.success){
                 dispatch(addUser(res.data.user))
                 const path = JSON.parse(localStorage.getItem('path'));
                 router.push(path ? path : res.data?.user?.role == 'user' ? '/user/dashboard' : '/owner/dashboard' )
                 localStorage.removeItem('path')
                 setLoading(false)
+            }else{
+                toast.warning(res.data.message)
             }
         } catch (error) {
-            setError(error.message)
+            toast.error(error.message)
         }finally{
             setLoading(false)
         }

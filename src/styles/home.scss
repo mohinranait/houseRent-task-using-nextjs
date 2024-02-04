@@ -128,7 +128,7 @@ section#houseSection{
        
         div{
             .bannerWrap{
-                height: unset;
+                min-height: 50vh;
                 .content-wrap{
                     padding: 30px 5px;
                     gap: 20px;

@@ -1,0 +1,192 @@
+
+@use "@/styles/utils/index";
+
+.allBooking{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    .bookingCard{
+        background-color: index.$secondaryColor;
+        border-radius: 4px;
+        box-shadow: index.$shadow;
+        overflow: hidden;
+        .topBar{
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(5,1fr);
+            .img{
+                grid-column: span 2/ span 2;
+                position: relative;
+                .payStatus{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    font-size: 14px;
+                    padding: 5px 8px;
+                    display: inline-block;
+                }
+                .unpaid{
+                    color: white;
+                    background-color: index.$primaryColor;
+                }
+                .paid {
+                    background-color: rgb(3, 137, 74);
+                    color: white;
+                }
+                img{
+                    width: 100%;
+                }
+            }
+            .content{
+                grid-column: span 2/ span 2;
+                padding-top: 10px;
+                .name{
+                    font-size: 25px;
+                    font-weight: 600;
+                    color: index.$darkColor;
+                    margin-bottom: 8px;
+                }
+                .location{
+                    font-size: 14px;
+                    color: rgb(65, 65, 65);
+                }
+                .featuresGroup{
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    row-gap: 10px;
+                    margin-bottom: 15px;
+                    margin-top: 20px;
+
+                    .feature{
+                        color: rgb(87, 87, 87);
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                }
+                .fleatureBottom{
+                    display: flex;
+                    
+                    gap: 15px;
+                    margin-bottom: 15px;
+                    margin-top: 20px;
+                    .feature{
+                        color: rgb(87, 87, 87);
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                }
+                
+            }
+            .mainFeature{
+                grid-column: span 1/ span 1;
+                display: flex;
+                align-content: center;
+                flex-direction: column;
+                row-gap: 20px;
+                padding-top: 15px;
+                li{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: rgb(77, 77, 77);
+                    .icon{
+                        color: index.$primaryColor;
+                    }
+                }
+            }
+        }   
+        .footer{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            .button{
+                background-color: index.$primaryColor;
+                color: index.$secondaryColor;
+                padding: 10px 15px;
+                border-radius: 4px;
+                border: none;
+            }
+            .payment{
+                background-color: rgb(1, 126, 80);
+                color: white;
+                margin-right: 5px;
+            }
+            .group{
+                display: flex;
+                align-items: center;
+                gap: 25px;
+                .iconText{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: rgb(50, 50, 50);
+                    .boldText{
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        hr{
+            margin: 0;
+            padding: 0;
+            border: 1px solid rgb(237, 237, 237);
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:992px) {
+    .allBooking{
+        flex-direction: column;
+        row-gap: 20px;
+        .bookingCard{
+            .topBar{
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 1fr;
+                .content{
+                    grid-column: span 2/ span 2;
+                    padding-left: 10px;
+                    .name{
+                        font-size: 20px;
+                    }
+                    .featuresGroup{
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        row-gap: 10px;
+                    }
+                    .fleatureBottom{
+                        padding-left: 10px;
+                    }
+                    
+                }
+                .mainFeature{
+                    grid-column: span 1/ span 1;
+                    row-gap: 20px;
+                    padding-left: 10px;
+                    padding-bottom: 10px;
+                    li{
+                        gap: 10px;
+                    }
+                }
+            }   
+            .footer{
+                flex-direction: column;
+                row-gap: 15px;
+                .fItem{
+                    width: 100%;
+                }
+                .group{
+                    flex-direction: column;
+                    align-items: start;
+                    row-gap: 10px;
+                }
+            }
+        }
+    }
+}

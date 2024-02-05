@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiHeart, CiShare2 } from "react-icons/ci";
-import { MdCompareArrows, MdFavorite } from "react-icons/md";
+import { CiHeart } from "react-icons/ci";
+import {  MdFavorite, MdOutlineArrowOutward } from "react-icons/md";
 import { IoBedOutline, IoCarSportOutline } from "react-icons/io5";
 import { FaBath, FaMapMarkerAlt } from "react-icons/fa";
 import { LuTriangleRight } from "react-icons/lu";
@@ -110,15 +110,13 @@ const HouseCard = ({house}) => {
                     <div className='cart-footer'>
                         <span className='price'>$ {price}</span>
                         <div className='icons'>
-                            <span className=''><MdCompareArrows size={23} /></span>
-                            <span className=''><CiShare2 size={23} /></span>
                             
                             <span onClick={() => handleFavoriteMethod()} className=''>
                                 {
                                     favoriteMatch?._id ?   <MdFavorite size={23} /> :   <CiHeart size={23} />
                                 }
-                              
                             </span>
+                            <Link href={`/house/${_id}`} className='view'><MdOutlineArrowOutward  size={20}  /></Link>
                         </div>
                     </div>
                 </div>

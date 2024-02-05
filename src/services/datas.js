@@ -17,7 +17,8 @@ const data = {
         {_id: 8, label:"Silinder", value:"Silinder"},
         {_id: 9, label:"Lift", value:"Lift"},
         {_id: 10, label:"High Secutity", value:"High Secutity"},
-    ]
+    ],
+
 }
 
 export default data

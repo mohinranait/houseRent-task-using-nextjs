@@ -8,6 +8,7 @@ import useAxiosPublic from '@/hooks/useAxiosPublic';
 import Input from '../inputs/Input';
 import data from '@/services/datas';
 import "@/styles/createHouseForm.scss"
+import "@/styles/imageFile.scss"
 import "@/styles/selectTag.scss"
 import { uploadMultipleImage } from '@/services/uploadImage';
 import { toast } from 'react-toastify';
@@ -234,6 +235,20 @@ const UpdateHouseForm = ({id}) => {
                 
             </div>
 
+            <div className='section'>
+                <p className='sectionTitle'>Upload images</p>
+                <label className='fileUpload' htmlFor="image">
+                    <span className='label'>Upload image</span>
+                    <input type="file" 
+                        multiple
+                        name='image'
+                        id='image'
+                        accept='image/*'
+                        onChange={handleFileChange}
+                    />
+                </label>
+            </div>
+
 
             <div className='section houseInfo'>
                 <p className='sectionTitle'>About house</p>
@@ -270,15 +285,6 @@ const UpdateHouseForm = ({id}) => {
                
                 <div className="lastSection">
                     <div>
-                        <input type="file" 
-                        multiple
-                        name='image'
-                        id='image'
-                        accept='image/*'
-                        onChange={handleFileChange}
-                        />
-                    </div>
-                    <div>
                         <label htmlFor="featu">
                             <input type="checkbox" id='featu' name='' /> Features house
                         </label>
@@ -298,7 +304,6 @@ const UpdateHouseForm = ({id}) => {
                             {
                                 loading ? "Wait..." : "Create house"
                             }
-                            
                         </PrimaryButton>
                     </div>
                 </div>

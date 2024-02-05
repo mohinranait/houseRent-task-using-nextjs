@@ -1,10 +1,97 @@
+@use "@/styles/utils/index";
+
+
 footer{
-    padding: 20px 0;
-    background-color: rgb(49, 49, 49);
-    .footertext{
-        font-size: 25px;
-      
-        color: white;
-        text-align: center;
+    padding: 50px 0;
+    background-color: rgb(255, 255, 255);
+    .wrap{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 25px;
+        .column{
+            .inforWebsite{
+                margin-top: 15px;
+                color: rgb(123, 123, 123);
+                font-size: 14px;
+            }
+            .title{
+                font-size: 18px;
+                font-weight: 700;
+                color: rgb(54, 54, 54);
+            }
+            ul.address{
+                li{
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    color: rgb(103, 103, 103);
+                    .icon{
+                        color: index.$primaryColor;
+                    }
+                }
+            }
+            ul {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                li{
+                    a{
+                        width: 100%;
+                        display: inline-block;
+                        color: rgb(113, 113, 113);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    footer{
+        padding: 50px 0;
+        background-color: rgb(255, 255, 255);
+        .wrap{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            .column{
+                .inforWebsite{
+                    margin-top: 15px;
+                    color: rgb(123, 123, 123);
+                    font-size: 14px;
+                }
+                .title{
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: rgb(54, 54, 54);
+                }
+                ul.address{
+                    li{
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        color: rgb(103, 103, 103);
+                        .icon{
+                            color: index.$primaryColor;
+                        }
+                    }
+                }
+                ul {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    li{
+                        a{
+                            width: 100%;
+                            display: inline-block;
+                            color: rgb(113, 113, 113);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

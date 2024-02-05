@@ -8,6 +8,9 @@ const nextConfig = {
             {
                 hostname: "i.gifer.com",
             },
+            {
+                hostname: "doccure.dreamstechnologies.com",
+            },
         ],
     },
 };

@@ -1,0 +1,22 @@
+@use "@/styles/utils/index";
+
+.fileUpload{
+   border: 3px dotted #ddd;
+   display: block;
+   padding: 30px 40px; 
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 6px;
+    input{
+        display: none;
+    }
+    .label{
+        padding: 15px 20px ;
+        cursor: pointer;
+        background-color: index.$primaryColor;
+        color: index.$secondaryColor;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+}

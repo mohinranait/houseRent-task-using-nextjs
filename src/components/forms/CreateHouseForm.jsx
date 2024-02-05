@@ -1,6 +1,8 @@
 'use client'
 import React, { useState } from 'react';
 import "@/styles/createHouseForm.scss"
+import "@/styles/imageFile.scss"
+
 import Input from '../inputs/Input';
 import "@/styles/selectTag.scss"
 import data from '@/services/datas';
@@ -221,6 +223,21 @@ const CreateHouseForm = () => {
             </div>
 
 
+            <div className='section'>
+                <p className='sectionTitle'>Upload images</p>
+                <label className='fileUpload' htmlFor="image">
+                    <span className='label'>Upload image</span>
+                    <input type="file" 
+                        multiple
+                        name='image'
+                        id='image'
+                        accept='image/*'
+                        onChange={handleFileChange}
+                    />
+                    
+                </label>
+            </div>
+
             <div className='section houseInfo'>
                 <p className='sectionTitle'>About house</p>
                 <div className='row-group'>
@@ -255,15 +272,6 @@ const CreateHouseForm = () => {
                 <p className='sectionTitle'>Outfiled</p>
                
                 <div className="lastSection">
-                    <div>
-                        <input type="file" 
-                        multiple
-                        name='image'
-                        id='image'
-                        accept='image/*'
-                        onChange={handleFileChange}
-                        />
-                    </div>
                     <div>
                         <label htmlFor="featu">
                             <input type="checkbox" id='featu' name='' /> Features house

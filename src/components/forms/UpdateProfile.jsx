@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '../inputs/Input';
 import "@/styles/selectTag.scss"
 import "@/styles/updateForm.scss"
+import "@/styles/imageFile.scss"
 import PrimaryButton from '../buttons/primary/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
 import data from '@/services/datas';
@@ -79,11 +80,20 @@ const UpdateProfile = () => {
                     </select>
                 </div>
             </div>
+            
+
             <div className='inputGroup'>
-                <div>
-                    <Input onChange={handleFileChange} type={'file'} placeholder={"Avater"} />
-                </div>
+                <label className='fileUpload' htmlFor="image">
+                    <span className='label'>Upload image</span>
+                    <input type="file" 
+                        name='image'
+                        id='image'
+                        accept='image/*'
+                        onChange={handleFileChange}
+                    />
+                </label>
             </div>
+
             <div className='inputGroup'>
                <div>
                 <PrimaryButton type={'submit'}>

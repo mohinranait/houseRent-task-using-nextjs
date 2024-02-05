@@ -19,7 +19,7 @@
     .content{
         display: flex;
         flex-direction: column;
-        padding: 16px 0 0 16px;
+        padding: 16px 10px 0 5px;
         .grow{
             flex-grow: 1;
         }
@@ -68,6 +68,17 @@
                 gap: 10px;
                 span svg{
                     font-size: 11px;
+                    cursor: pointer;
+                }
+                .view{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color: black;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }
